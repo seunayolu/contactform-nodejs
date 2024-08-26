@@ -1,27 +1,31 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const path = require('path');
+const submitForm = require('./routes/submitForm');
 
+// Load environment variables from .env file
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
 
-// Set view engine
+// Middleware to parse form data
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Set up EJS as the template engine
 app.set('view engine', 'ejs');
 
-// Middleware
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
-
-// Routes
-const contactRoute = require('./routes/contact');
-app.use('/contact', contactRoute);
-
+// Serve the form page
 app.get('/', (req, res) => {
-    res.redirect('/contact');
+    res.render('index');
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+// Route to handle form submission
+app.post('/submit', submitForm);
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
