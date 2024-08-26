@@ -1,18 +1,17 @@
 {
-  "name": "contact-form-app",
-  "version": "1.0.0",
-  "description": "Node.js contact form app with AWS integration",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js"
-  },
-  "dependencies": {
-    "@aws-sdk/client-s3": "^3.0.0",
-    "@aws-sdk/client-ssm": "^3.0.0",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "multer": "^1.4.5-lts.1",
-    "mysql2": "^3.2.0",
-    "ejs": "^3.1.8"
-  }
-}
+    "name": "contact-form-app",
+    "version": "1.0.0",
+    "description": "Node.js contact form app with AWS integration",
+    "main": "app/server.js",
+    "scripts": {
+      "start": "node app/server.js"
+    },
+    "dependencies": {
+      "@aws-sdk/client-s3": "^3.0.0",
+      "@aws-sdk/client-ssm": "^3.0.0",
+      "dotenv": "^16.0.3",
+      "express": "^4.18.2",
+      "multer": "^1.4.5-lts.1",
+      "mysql2": "^3.2.0"
+    }
+  }  
