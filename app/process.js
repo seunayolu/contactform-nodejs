@@ -1,3 +1,4 @@
+// process.js
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const { SSMClient, GetParameterCommand } = require('@aws-sdk/client-ssm');
 const mysql = require('mysql2/promise');
@@ -62,7 +63,7 @@ const processForm = async (req, res) => {
       };
 
       const command = new PutObjectCommand(uploadParams);
-      const uploadResult = await s3Client.send(command);
+      await s3Client.send(command);
       attachmentUrl = `https://${uploadParams.Bucket}.s3.${process.env.AWS_REGION}.amazonaws.com/${uploadParams.Key}`;
 
       // Clean up local file after upload
@@ -82,4 +83,4 @@ const processForm = async (req, res) => {
   }
 };
 
-module.exports = upload.single('attachment'), processForm;
+module.exports = { upload, processForm };

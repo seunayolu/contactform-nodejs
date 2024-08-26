@@ -1,7 +1,8 @@
+// server.js
 const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
-const processForm = require('./process');
+const { upload, processForm } = require('./process'); // Import the process functions
 
 // Load environment variables
 dotenv.config();
@@ -9,12 +10,12 @@ dotenv.config();
 const app = express();
 
 // Middleware to serve static files
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Handle form submissions
-app.post('/submit-form', processForm);
+app.post('/submit-form', upload.single('attachment'), processForm);
 
 // Start the server
 const PORT = process.env.PORT || 3000;
