@@ -14,7 +14,7 @@ sudo mkdir -p /usr/src/app
 
 # Variable for EFS
 
-EFS_DNS_NAME=fs-02accc65a4054a881.efs.eu-west-1.amazonaws.com
+EFS_DNS_NAME=fs-0bc07e8d29a0b0eb4.efs.eu-west-1.amazonaws.com
 
 # EFS Mount to the /usr/src/app
 
