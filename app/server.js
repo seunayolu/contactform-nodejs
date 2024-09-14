@@ -7,6 +7,8 @@ const { upload, processForm } = require('./process');
 // Load environment variables
 dotenv.config();
 
+console.log('AWS Region:', process.env.AWS_REGION);
+
 const app = express();
 
 // Middleware to serve static files
