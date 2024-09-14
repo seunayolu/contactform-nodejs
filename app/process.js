@@ -1,5 +1,4 @@
 // process.js
-console.log('AWS Region:', process.env.AWS_REGION);
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const { SSMClient, GetParameterCommand } = require('@aws-sdk/client-ssm');
 const mysql = require('mysql2/promise');
